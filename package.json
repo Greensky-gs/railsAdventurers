@@ -1,7 +1,7 @@
 {
   "name": "railsAdventurers",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
     "amethystjs": "^1.6.2",
@@ -18,5 +18,11 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-typescript": "^0.14.0",
     "prettier": "^3.0.1"
+  },
+  "scripts": {
+    "build": "yarn tsc -b",
+    "start": "node .",
+    "launch": "yarn install && yarn build && yarn start",
+    "lint": "yarn prettier -w src"
   }
 }
