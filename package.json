@@ -23,6 +23,7 @@
     "build": "yarn tsc -b",
     "start": "node .",
     "launch": "yarn install && yarn build && yarn start",
-    "lint": "yarn prettier -w src"
+    "lint": "yarn prettier -w src",
+    "test": "node test/index.js"
   }
 }
