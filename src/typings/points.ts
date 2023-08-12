@@ -28,7 +28,7 @@ type counterType = {
 type id = number;
 export type basePoint<T extends pointKind> = {
     type: T;
-    // id: id;
+    id: id;
 }
 export type pointType<PointType extends pointKind> = 
     basePoint<PointType>
