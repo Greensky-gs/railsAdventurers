@@ -31,3 +31,8 @@ export type card<Type extends cardType> = baseCard<Type> & (Type extends 'wagon'
     ? destinationType
     : never
 );
+export type touch = {
+    from: id;
+    to: id;
+    by: id;
+}

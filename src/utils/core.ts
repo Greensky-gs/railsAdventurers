@@ -1,8 +1,11 @@
 import points from '../data/points.json';
+import { touch } from '../typings/datas';
 import { pointKind, pointType } from '../typings/points';
+import touches from '../data/touches.json'
 
 export const getPoints = (): pointType<pointKind>[] => points as pointType<pointKind>[];
 export const getCounters = (): pointType<'counter'>[] => getPoints().filter(x => x.type === 'counter') as pointType<'counter'>[]
+export const getCities = (): pointType<'city'>[] => getPoints().filter(x => x.type === 'city') as pointType<'city'>[];
 export const getCounterPos = (number: number) => {
     const min = 0;
     if (number < min) number = min;
@@ -24,3 +27,4 @@ export const getPathPos = (pos: [number, number, number, number, number, number,
     return values as [{ x: number; y: number }, { x: number; y: number }, { x: number; y: number }, { x: number; y: number }];
 }
 export const getPaths = (): pointType<'rail'>[] => getPoints().filter(x => x.type === 'rail') as pointType<'rail'>[]
+export const getTouches = (): touch[] => touches;
