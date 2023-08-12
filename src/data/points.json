@@ -1,0 +1,2215 @@
+[
+    { "name": "Murmansk", "type": "city", "x": 44, "y": 125, "id": 0 },
+    { "name": "Kirkenes", "type": "city", "x": 63, "y": 199, "id": 1 },
+    { "name": "Honninsvåc", "type": "city", "x": "29", "y": 252, "id": 2 },
+    { "name": "Tromsø", "type": "city", "x": 114, "y": 325, "id": 3 },
+    { "name": "Kiruna", "type": "city", "x": 184, "y": 306, "id": 4 },
+    { "name": "Narvik", "type": "city", "x": 173, "y": 342, "id": 5 },
+    { "name": "Moirana", "type": "city", "x": 268, "y": 354, "id": 6 },
+    { "name": "Rovaniemi", "type": "city", "x": 180, "y": 186, "id": 7 },
+    { "name": "Tornio", "type": "city", "x": 219, "y": 191, "id": 8 },
+    { "name": "Oulu", "type": "city", "x": 248, "y": 164, "id": 9 },
+    { "name": "Umeå", "type": "city", "x": 312, "y": 214, "id": 10 },
+    { "name": "Kajaani", "type": "city", "x": 238, "y": 101, "id": 11 },
+    { "name": "Lieska", "type": "city", "x": 258, "y": 65, "id": 12 },
+    { "name": "Kvopio", "type": "city", "x": 295, "y": 75, "id": 13 },
+    { "name": "Imatra", "type": "city", "x": 342, "y": 34, "id": 14 },
+    { "name": "Boden", "type": "city", "x": 225, "y": 229, "id": 15 },
+    { "name": "Vaasa", "type": "city", "x": 338, "y": 184, "id": 16 },
+    { "name": "Sundsvall", "type": "city", "x": 398, "y": 240, "id": 17 },
+    { "name": "Lahti", "type": "city", "x": 383, "y": 84, "id": 18 },
+    { "name": "Helsinki", "type": "city", "x": 425, "y": 83, "id": 19 },
+    { "name": "Tampere", "type": "city", "x": 383, "y": 124, "id": 20 },
+    { "name": "Turku", "type": "city", "x": 423, "y": 126, "id": 21 },
+    { "name": "Östersund", "type": "city", "x": 386, "y": 298, "id": 22 },
+    { "name": "Åndalsnes", "type": "city", "x": 443, "y": 387, "id": 23 },
+    { "name": "Tallinn", "type": "city", "x": 470, "y": 71, "id": 24 },
+    { "name": "Stockholm", "type": "city", "x": 503, "y": 178, "id": 25 },
+    { "name": "Norrköping", "type": "city", "x": 551, "y": 181, "id": 26 },
+    { "name": "Örebro", "type": "city", "x": 524, "y": 245, "id": 27 },
+    { "name": "Oslo", "type": "city", "x": 550, "y": 308, "id": 28 },
+    { "name": "Lillehammer", "type": "city", "x": 490, "y": 340, "id": 29 },
+    { "name": "Trondheim", "type": "city", "x": 411, "y": 356, "id": 30 },
+    { "name": "Bergen", "type": "city", "x": 545, "y": 426, "id": 31 },
+    { "name": "Karlskrona", "type": "city", "x": 645, "y": 165, "id": 32 },
+    { "name": "Köbenhavn", "type": "city", "x": 675, "y": 231, "id": 33 },
+    { "name": "Göteborg", "type": "city", "x": 604, "y": 260, "id": 34 },
+    { "name": "Århus", "type": "city", "x": 679, "y": 273, "id": 35 },
+    { "name": "Ålborg", "type": "city", "x": 644, "y": 293, "id": 36 },
+    { "name": "Kristlansand", "type": "city", "x": 608, "y": 335, "id": 37 },
+    { "name": "Stavanger", "type": "city", "x": 602, "y": 398, "id": 38 },
+    { "number": 0, "type": "counter", "x": 14, "y": 462, "id": 39 },
+    { "number": 1, "type": "counter", "x": 10, "y": 439, "id": 40 },
+    { "number": 2, "type": "counter", "x": 11, "y": 416, "id": 41 },
+    { "number": 3, "type": "counter", "x": 10, "y": 392, "id": 42 },
+    { "number": 4, "type": "counter", "x": 11, "y": 371, "id": 43 },
+    { "number": 5, "type": "counter", "x": 10, "y": 348, "id": 44 },
+    { "number": 6, "type": "counter", "x": 10, "y": 326, "id": 45 },
+    { "number": 7, "type": "counter", "x": 10, "y": 304, "id": 46 },
+    { "number": 8, "type": "counter", "x": 10, "y": 281, "id": 47 },
+    { "number": 9, "type": "counter", "x": 10, "y": 259, "id": 48 },
+    { "number": 10, "type": "counter", "x": 10, "y": 236, "id": 49 },
+    { "number": 11, "type": "counter", "x": 10, "y": 215, "id": 50 },
+    { "number": 12, "type": "counter", "x": 10, "y": 191, "id": 51 },
+    { "number": 13, "type": "counter", "x": 10, "y": 171, "id": 52 },
+    { "number": 14, "type": "counter", "x": 10, "y": 148, "id": 53 },
+    { "number": 15, "type": "counter", "x": 10, "y": 126, "id": 54 },
+    { "number": 16, "type": "counter", "x": 10, "y": 104, "id": 55 },
+    { "number": 17, "type": "counter", "x": 10, "y": 82, "id": 56 },
+    { "number": 18, "type": "counter", "x": 10, "y": 60, "id": 57 },
+    { "number": 19, "type": "counter", "x": 10, "y": 37, "id": 58 },
+    { "number": 20, "type": "counter", "x": 12, "y": 12, "id": 59 },
+    { "number": 21, "type": "counter", "x": 36, "y": 11, "id": 60 },
+    { "number": 22, "type": "counter", "x": 58, "y": 11, "id": 61 },
+    { "number": 23, "type": "counter", "x": 80, "y": 11, "id": 62 },
+    { "number": 24, "type": "counter", "x": 102, "y": 11, "id": 63 },
+    { "number": 25, "type": "counter", "x": 126, "y": 11, "id": 64 },
+    { "number": 26, "type": "counter", "x": 146, "y": 11, "id": 65 },
+    { "number": 27, "type": "counter", "x": 173, "y": 11, "id": 66 },
+    { "number": 28, "type": "counter", "x": 195, "y": 11, "id": 67 },
+    { "number": 29, "type": "counter", "x": 218, "y": 11, "id": 68 },
+    { "number": 30, "type": "counter", "x": 241, "y": 11, "id": 69 },
+    { "number": 31, "type": "counter", "x": 263, "y": 11, "id": 70 },
+    { "number": 32, "type": "counter", "x": 287, "y": 11, "id": 71 },
+    { "number": 33, "type": "counter", "x": 311, "y": 11, "id": 72 },
+    { "number": 34, "type": "counter", "x": 333, "y": 11, "id": 73 },
+    { "number": 35, "type": "counter", "x": 355, "y": 11, "id": 74 },
+    { "number": 36, "type": "counter", "x": 378, "y": 11, "id": 75 },
+    { "number": 37, "type": "counter", "x": 401, "y": 11, "id": 76 },
+    { "number": 38, "type": "counter", "x": 426, "y": 11, "id": 77 },
+    { "number": 39, "type": "counter", "x": 447, "y": 11, "id": 78 },
+    { "number": 40, "type": "counter", "x": 469, "y": 11, "id": 79 },
+    { "number": 41, "type": "counter", "x": 492, "y": 11, "id": 80 },
+    { "number": 42, "type": "counter", "x": 515, "y": 11, "id": 81 },
+    { "number": 43, "type": "counter", "x": 539, "y": 11, "id": 82 },
+    { "number": 44, "type": "counter", "x": 561, "y": 11, "id": 83 },
+    { "number": 45, "type": "counter", "x": 584, "y": 11, "id": 84 },
+    { "number": 46, "type": "counter", "x": 606, "y": 11, "id": 85 },
+    { "number": 47, "type": "counter", "x": 630, "y": 11, "id": 86 },
+    { "number": 48, "type": "counter", "x": 653, "y": 11, "id": 87 },
+    { "number": 49, "type": "counter", "x": 675, "y": 11, "id": 88 },
+    { "number": 50, "type": "counter", "x": 698, "y": 14, "id": 89 },
+    { "number": 51, "type": "counter", "x": 701, "y": 38, "id": 90 },
+    { "number": 52, "type": "counter", "x": 701, "y": 59, "id": 91 },
+    { "number": 53, "type": "counter", "x": 701, "y": 82, "id": 92 },
+    { "number": 54, "type": "counter", "x": 701, "y": 105, "id": 93 },
+    { "number": 55, "type": "counter", "x": 701, "y": 126, "id": 94 },
+    { "number": 56, "type": "counter", "x": 701, "y": 148, "id": 95 },
+    { "number": 57, "type": "counter", "x": 701, "y": 171, "id": 96 },
+    { "number": 58, "type": "counter", "x": 701, "y": 194, "id": 97 },
+    { "number": 59, "type": "counter", "x": 701, "y": 216, "id": 98 },
+    { "number": 60, "type": "counter", "x": 701, "y": 238, "id": 99 },
+    { "number": 61, "type": "counter", "x": 701, "y": 260, "id": 100 },
+    { "number": 62, "type": "counter", "x": 701, "y": 284, "id": 101 },
+    { "number": 63, "type": "counter", "x": 701, "y": 306, "id": 102 },
+    { "number": 64, "type": "counter", "x": 701, "y": 328, "id": 103 },
+    { "number": 65, "type": "counter", "x": 701, "y": 350, "id": 104 },
+    { "number": 66, "type": "counter", "x": 701, "y": 372, "id": 105 },
+    { "number": 67, "type": "counter", "x": 701, "y": 394, "id": 106 },
+    { "number": 68, "type": "counter", "x": 701, "y": 417, "id": 107 },
+    { "number": 69, "type": "counter", "x": 701, "y": 439, "id": 108 },
+    { "number": 70, "type": "counter", "x": 698, "y": 463, "id": 109 },
+    { "number": 71, "type": "counter", "x": 36, "y": 466, "id": 110 },
+    { "number": 72, "type": "counter", "x": 58, "y": 466, "id": 111 },
+    { "number": 73, "type": "counter", "x": 80, "y": 466, "id": 112 },
+    { "number": 74, "type": "counter", "x": 102, "y": 466, "id": 113 },
+    { "number": 75, "type": "counter", "x": 126, "y": 466, "id": 114 },
+    { "number": 76, "type": "counter", "x": 146, "y": 466, "id": 115 },
+    { "number": 77, "type": "counter", "x": 173, "y": 466, "id": 116 },
+    { "number": 78, "type": "counter", "x": 195, "y": 466, "id": 117 },
+    { "number": 79, "type": "counter", "x": 218, "y": 466, "id": 118 },
+    { "number": 80, "type": "counter", "x": 241, "y": 466, "id": 119 },
+    { "number": 81, "type": "counter", "x": 263, "y": 466, "id": 120 },
+    { "number": 82, "type": "counter", "x": 287, "y": 466, "id": 121 },
+    { "number": 83, "type": "counter", "x": 311, "y": 466, "id": 122 },
+    { "number": 84, "type": "counter", "x": 333, "y": 466, "id": 123 },
+    { "number": 85, "type": "counter", "x": 355, "y": 466, "id": 124 },
+    { "number": 86, "type": "counter", "x": 378, "y": 466, "id": 125 },
+    { "number": 87, "type": "counter", "x": 401, "y": 466, "id": 126 },
+    { "number": 88, "type": "counter", "x": 426, "y": 466, "id": 127 },
+    { "number": 89, "type": "counter", "x": 447, "y": 466, "id": 128 },
+    { "number": 90, "type": "counter", "x": 469, "y": 466, "id": 129 },
+    { "number": 91, "type": "counter", "x": 492, "y": 466, "id": 130 },
+    { "number": 92, "type": "counter", "x": 515, "y": 466, "id": 131 },
+    { "number": 93, "type": "counter", "x": 539, "y": 466, "id": 132 },
+    { "number": 94, "type": "counter", "x": 561, "y": 466, "id": 133 },
+    { "number": 95, "type": "counter", "x": 584, "y": 466, "id": 134 },
+    { "number": 96, "type": "counter", "x": 606, "y": 466, "id": 135 },
+    { "number": 97, "type": "counter", "x": 630, "y": 466, "id": 136 },
+    { "number": 98, "type": "counter", "x": 653, "y": 466, "id": 137 },
+    { "number": 99, "type": "counter", "x": 675, "y": 466, "id": 138 },
+    {
+        "type": "rail",
+        "fromX": 35,
+        "fromY": 131,
+        "toX": 51,
+        "toY": 201,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": true,
+                    "pos": [37, 131, 43, 133, 39, 154, 32, 153],
+                    "types": "bridge"
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "pos": [31, 156, 39, 157, 39, 179, 31, 179],
+                    "types": "bridge"
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "pos": [34, 186, 38, 180, 56, 195, 51, 200],
+                    "types": "bridge"
+                }
+            ]
+        ],
+        "id": 139
+    },
+    {
+        "type": "rail",
+        "fromX": 64,
+        "fromY": 208,
+        "toX": 33,
+        "toY": 245,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": true,
+                    "pos": [57, 206, 64, 210, 56, 229, 49, 226],
+                    "types": "bridge"
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "pos": [47, 228, 53, 234, 37, 249, 33, 245],
+                    "types": "bridge"
+                }
+            ]
+        ],
+        "id": 140
+    },
+    {
+        "type": "rail",
+        "fromX": 34,
+        "fromY": 259,
+        "toX": 101,
+        "toY": 326,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": true,
+                    "pos": [30, 263, 34, 259, 47, 276, 41, 279],
+                    "types": "bridge"
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": true,
+                    "pos": [43, 283, 49, 279, 63, 295, 57, 299],
+                    "types": "bridge"
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "pos": [62, 301, 66, 297, 83, 310, 79, 315],
+                    "types": "bridge"
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "pos": [83, 317, 86, 312, 105, 322, 101, 327],
+                    "types": "bridge"
+                }
+            ]
+        ],
+        "id": 141
+    },
+    {
+        "type": "rail",
+        "fromX": 108,
+        "fromY": 355,
+        "toX": 171,
+        "toY": 353,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": true,
+                    "pos": [107, 335, 113, 333, 124, 353, 117, 357],
+                    "types": "bridge"
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "pos": [123, 361, 125, 354, 146, 360, 144, 367],
+                    "types": "bridge"
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "pos": [152, 366, 148, 361, 166, 348, 170, 353],
+                    "types": "bridge"
+                }
+            ]
+        ],
+        "id": 142
+    },
+    {
+        "type": "rail",
+        "fromX": 172,
+        "fromY": 353,
+        "toX": 264,
+        "toY": 366,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": true,
+                    "pos": [173, 354, 178, 349, 193, 364, 188, 369],
+                    "types": "bridge"
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": true,
+                    "pos": [193, 372, 195, 366, 215, 373, 213, 379],
+                    "types": "bridge"
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "pos": [219, 379, 218, 373, 239, 372, 240, 378],
+                    "types": "bridge"
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "pos": [246, 376, 242, 371, 260, 360, 264, 366],
+                    "types": "bridge"
+                }
+            ]
+        ],
+        "id": 143
+    },
+    {
+        "type": "rail",
+        "fromX": 183,
+        "fromY": 338,
+        "toX": 173,
+        "toY": 311,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "pos": [174, 313, 179, 315, 172, 333, 168, 331],
+                    "types": "tunnel"
+                }
+            ],
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "pos": [184, 317, 189, 318, 183, 338, 178, 335],
+                    "types": "tunnel"
+                }
+            ]
+        ],
+        "id": 144
+    },
+    {
+        "type": "rail",
+        "fromX": 277,
+        "fromY": 348,
+        "toX": 401,
+        "toY": 363,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [279, 355, 279, 350, 298, 350, 298, 355]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [304, 355, 304, 350, 324, 350, 324, 355]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [330, 355, 330, 350, 349, 350, 349, 355]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [355, 355, 355, 350, 374, 350, 374, 355]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [380, 355, 380, 350, 399, 350, 399, 355]
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [269, 365, 274, 361, 289, 377, 283, 382]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [287, 385, 291, 379, 310, 388, 307, 395]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [313, 395, 313, 389, 334, 390, 334, 397]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [338, 397, 337, 390, 358, 388, 359, 395]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [364, 395, 361, 388, 379, 379, 384, 385]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [388, 382, 382, 377, 397, 361, 402, 366]
+                }
+            ]
+        ],
+        "id": 145
+    },
+    {
+        "type": "rail",
+        "fromX": 405,
+        "fromY": 364,
+        "toX": 436,
+        "toY": 395,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [406, 364, 412, 366, 412, 386, 406, 386]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [413, 395, 413, 388, 434, 388, 435, 394]
+                }
+            ]
+        ],
+        "id": 146
+    },
+    {
+        "type": "rail",
+        "fromX": 346,
+        "fromY": 396,
+        "toX": 536,
+        "toY": 436,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [436, 397, 442, 398, 443, 418, 436, 419]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [440, 426, 444, 420, 463, 432, 459, 438]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [463, 439, 466, 433, 486, 439, 484, 446]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [490, 447, 490, 440, 511, 441, 510, 447]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [517, 446, 514, 440, 532, 430, 535, 436]
+                }
+            ]
+        ],
+        "id": 147
+    },
+    {
+        "type": "rail",
+        "fromX": 557,
+        "fromY": 431,
+        "toX": 597,
+        "toY": 407,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [558, 431, 559, 424, 579, 422, 580, 430]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [586, 426, 581, 421, 597, 407, 602, 411]
+                }
+            ]
+        ],
+        "id": 148
+    },
+    {
+        "type": "rail",
+        "fromX": 612,
+        "fromY": 403,
+        "toX": 600,
+        "toY": 343,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [615, 404, 610, 398, 627, 385, 632, 390]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [627, 383, 628, 361, 635, 361, 634, 383]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [627, 359, 611, 344, 616, 339, 633, 354]
+                }
+            ],
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [599, 389, 600, 370, 605, 370, 604, 389]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [601, 364, 601, 345, 606, 345, 605, 364]
+                }
+            ]
+        ],
+        "id": 149
+    },
+    {
+        "type": "rail",
+        "fromX": 616,
+        "fromY": 337,
+        "toX": 645,
+        "toY": 299,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [619, 338, 615, 331, 634, 321, 638, 328]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [635, 319, 645, 300, 651, 303, 641, 323]
+                }
+            ]
+        ],
+        "id": 150
+    },
+    {
+        "type": "rail",
+        "fromX": 653,
+        "fromY": 293,
+        "toX": 670,
+        "toY": 274,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [653, 292, 649, 285, 669, 274, 674, 281]
+                }
+            ]
+        ],
+        "id": 151
+    },
+    {
+        "type": "rail",
+        "fromX": 672,
+        "fromY": 266,
+        "toX": 680,
+        "toY": 242,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [673, 264, 674, 243, 680, 243, 680, 264]
+                }
+            ]
+        ],
+        "id": 152
+    },
+    {
+        "type": "rail",
+        "fromX": 660,
+        "fromY": 225,
+        "toX": 657,
+        "toY": 170,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [660, 223, 651, 202, 658, 199, 666, 219]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [650, 199, 642, 179, 647, 176, 657, 197]
+                }
+            ],
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [670, 219, 659, 198, 667, 195, 675, 216]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [660, 196, 651, 176, 656, 172, 666, 193]
+                }
+            ]
+        ],
+        "id": 153
+    },
+    {
+        "type": "rail",
+        "fromX": 559,
+        "fromY": 168,
+        "toX": 636,
+        "toY": 178,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [632, 160, 633, 167, 611, 170, 611, 162]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [585, 173, 585, 166, 607, 163, 607, 170]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [582, 166, 582, 174, 561, 176, 560, 169]
+                }
+            ],
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [633, 169, 634, 177, 612, 179, 611, 172]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [609, 180, 586, 183, 586, 176, 608, 173]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [584, 183, 562, 186, 561, 179, 583, 176]
+                }
+            ]
+        ],
+        "id": 154
+    },
+    {
+        "type": "rail",
+        "fromX": 519,
+        "fromY": 167,
+        "toX": 540,
+        "toY": 189,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [541, 172, 540, 178, 519, 175, 520, 169]
+                }
+            ],
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [540, 182, 539, 189, 517, 185, 518, 178]
+                }
+            ]
+        ],
+        "id": 155
+    },
+    {
+        "type": "rail",
+        "fromX": 661,
+        "fromY": 231,
+        "toX": 616,
+        "toY": 254,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [659, 232, 661, 238, 642, 246, 639, 239]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [635, 240, 638, 247, 618, 254, 616, 247]
+                }
+            ]
+        ],
+        "id": 156
+    },
+    {
+        "type": "rail",
+        "fromX": 495,
+        "fromY": 194,
+        "toX": 531,
+        "toY": 236,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [497, 196, 504, 193, 512, 215, 504, 217]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [505, 220, 512, 218, 520, 239, 513, 241]
+                }
+            ],
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [506, 192, 513, 190, 521, 211, 514, 214]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [514, 216, 521, 214, 529, 235, 523, 238]
+                }
+            ]
+        ],
+        "id": 157
+    },
+    {
+        "type": "rail",
+        "fromX": 535,
+        "fromY": 249,
+        "toX": 534,
+        "toY": 304,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [518, 257, 525, 255, 533, 276, 526, 279]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [534, 278, 541, 300, 535, 302, 527, 281]
+                }
+            ],
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [534, 251, 542, 273, 536, 275, 528, 254]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [543, 275, 551, 297, 544, 299, 536, 278]
+                }
+            ]
+        ],
+        "id": 158
+    },
+    {
+        "type": "rail",
+        "fromX": 537,
+        "fromY": 316,
+        "toX": 550,
+        "toY": 411,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [536, 319, 540, 322, 529, 338, 525, 335]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [521, 344, 526, 346, 521, 364, 516, 363]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [516, 374, 521, 374, 525, 393, 520, 394]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [527, 400, 538, 417, 533, 419, 523, 403]
+                }
+            ],
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [544, 325, 548, 328, 538, 343, 534, 341]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [531, 347, 536, 348, 531, 366, 527, 366]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [526, 373, 531, 372, 535, 390, 531, 392]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [532, 398, 536, 395, 546, 411, 542, 414]
+                }
+            ]
+        ],
+        "id": 159
+    },
+    {
+        "type": "rail",
+        "fromX": 557,
+        "fromY": 314,
+        "toX": 600,
+        "toY": 339,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [557, 315, 575, 329, 570, 334, 552, 320]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [578, 330, 599, 332, 599, 339, 577, 336]
+                }
+            ]
+        ],
+        "id": 160
+    },
+    {
+        "type": "rail",
+        "fromX": 563,
+        "fromY": 312,
+        "toX": 635,
+        "toY": 294,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [564, 305, 584, 302, 586, 308, 565, 311]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [589, 301, 609, 298, 610, 305, 589, 308]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [614, 297, 634, 295, 635, 301, 614, 304]
+                }
+            ]
+        ],
+        "id": 161
+    },
+    {
+        "type": "rail",
+        "fromX": 563,
+        "fromY": 302,
+        "toX": 595,
+        "toY": 265,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [562, 301, 580, 287, 575, 281, 558, 296]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [594, 265, 599, 270, 582, 284, 577, 279]
+                }
+            ]
+        ],
+        "id": 162
+    },
+    {
+        "type": "rail",
+        "fromX": 590,
+        "fromY": 261,
+        "toX": 545,
+        "toY": 242,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [545, 242, 566, 247, 564, 254, 543, 249]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [569, 248, 590, 253, 590, 260, 568, 255]
+                }
+            ]
+        ],
+        "id": 163
+    },
+    {
+        "type": "rail",
+        "fromX": 550,
+        "fromY": 192,
+        "toX": 532,
+        "toY": 239,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [550, 193, 551, 215, 543, 215, 542, 193]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [550, 222, 540, 241, 533, 238, 543, 218]
+                }
+            ]
+        ],
+        "id": 164
+    },
+    {
+        "type": "rail",
+        "fromX": 559,
+        "fromY": 188,
+        "toX": 597,
+        "toY": 252,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [559, 189, 573, 207, 566, 212, 553, 193]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [574, 209, 588, 227, 582, 232, 568, 213]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [589, 229, 603, 247, 597, 252, 583, 233]
+                }
+            ]
+        ],
+        "id": 165
+    },
+    {
+        "type": "rail",
+        "fromX": 647,
+        "fromY": 285,
+        "toX": 614,
+        "toY": 259,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [647, 284, 647, 264, 641, 264, 640, 284]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [637, 261, 636, 269, 615, 266, 616, 260]
+                }
+            ]
+        ],
+        "id": 166
+    },
+    {
+        "type": "rail",
+        "fromX": 514,
+        "fromY": 166,
+        "toX": 472,
+        "toY": 79,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [514, 165, 514, 144, 507, 144, 507, 165]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [506, 141, 513, 140, 509, 118, 501, 120]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [501, 117, 507, 113, 495, 95, 489, 99]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [492, 92, 478, 76, 473, 80, 487, 97]
+                }
+            ]
+        ],
+        "id": 167
+    },
+    {
+        "type": "rail",
+        "fromX": 466,
+        "fromY": 64,
+        "toX": 429,
+        "toY": 72,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [443, 55, 448, 60, 433, 76, 428, 71]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [450, 48, 466, 63, 460, 68, 445, 53]
+                }
+            ]
+        ],
+        "id": 168
+    },
+    {
+        "type": "rail",
+        "fromX": 505,
+        "fromY": 161,
+        "toX": 427,
+        "toY": 94,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [496, 168, 481, 150, 475, 154, 491, 172]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [481, 148, 466, 130, 460, 135, 474, 153]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [464, 128, 450, 110, 443, 115, 458, 133]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [449, 109, 434, 91, 428, 96, 442, 113]
+                }
+            ],
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [504, 161, 490, 143, 483, 149, 498, 165]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [488, 141, 475, 124, 467, 129, 482, 147]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [472, 122, 458, 105, 451, 110, 466, 127]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [457, 103, 442, 85, 436, 90, 450, 108]
+                }
+            ]
+        ],
+        "id": 169
+    },
+    {
+        "type": "rail",
+        "fromX": 487,
+        "fromY": 177,
+        "toX": 432,
+        "toY": 131,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [485, 177, 465, 171, 467, 165, 486, 171]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [464, 164, 447, 151, 442, 157, 460, 170]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [445, 150, 432, 132, 427, 136, 439, 154]
+                }
+            ]
+        ],
+        "id": 170
+    },
+    {
+        "type": "rail",
+        "fromX": 427,
+        "fromY": 119,
+        "toX": 419,
+        "toY": 95,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [427, 119, 427, 95, 419, 95, 419, 119]
+                }
+            ]
+        ],
+        "id": 171
+    },
+    {
+        "type": "rail",
+        "fromX": 414,
+        "fromY": 80,
+        "toX": 390,
+        "toY": 88,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [414, 80, 414, 88, 390, 88, 390, 80]
+                }
+            ]
+        ],
+        "id": 172
+    },
+    {
+        "type": "rail",
+        "fromX": 387,
+        "fromY": 92,
+        "toX": 379,
+        "toY": 115,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [387, 92, 387, 115, 379, 115, 379, 92]
+                }
+            ]
+        ],
+        "id": 173
+    },
+    {
+        "type": "rail",
+        "fromX": 415,
+        "fromY": 99,
+        "toX": 393,
+        "toY": 110,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [415, 99, 398, 116, 393, 110, 409, 94]
+                }
+            ]
+        ],
+        "id": 174
+    },
+    {
+        "type": "rail",
+        "fromX": 416,
+        "fromY": 120,
+        "toX": 392,
+        "toY": 129,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [416, 120, 416, 129, 392, 129, 392, 120]
+                }
+            ]
+        ],
+        "id": 175
+    },
+    {
+        "type": "rail",
+        "fromX": 45,
+        "fromY": 115,
+        "toX": 248,
+        "toY": 65,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [52, 119, 65, 101, 59, 96, 46, 115]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [67, 99, 83, 82, 78, 77, 61, 93]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [80, 75, 85, 80, 103, 67, 99, 61]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [105, 66, 126, 57, 123, 49, 101, 60]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [128, 56, 150, 50, 149, 41, 127, 48]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [153, 49, 175, 47, 175, 39, 152, 41]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [178, 47, 201, 48, 201, 40, 178, 39]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [206, 41, 228, 48, 225, 54, 203, 49]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [227, 55, 231, 48, 252, 58, 248, 65]
+                }
+            ]
+        ],
+        "id": 176
+    },
+    {
+        "type": "rail",
+        "fromX": 63,
+        "fromY": 188,
+        "toX": 176,
+        "toY": 178,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [69, 194, 84, 176, 78, 171, 63, 189]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [86, 175, 105, 161, 99, 155, 81, 169]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [106, 161, 128, 159, 128, 151, 105, 153]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [130, 159, 134, 152, 155, 162, 151, 169]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [157, 164, 175, 179, 170, 184, 153, 170]
+                }
+            ]
+        ],
+        "id": 177
+    },
+    {
+        "type": "rail",
+        "fromX": 232,
+        "fromY": 159,
+        "toX": 190,
+        "toY": 186,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [231, 159, 234, 166, 214, 176, 210, 168]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [208, 169, 212, 177, 191, 186, 187, 178]
+                }
+            ]
+        ],
+        "id": 178
+    },
+    {
+        "type": "rail",
+        "fromX": 187,
+        "fromY": 189,
+        "toX": 211,
+        "toY": 198,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [187, 189, 211, 189, 211, 198, 187, 197]
+                }
+            ]
+        ],
+        "id": 179
+    },
+    {
+        "type": "rail",
+        "fromX": 240,
+        "fromY": 168,
+        "toX": 229,
+        "toY": 190,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [240, 168, 246, 173, 229, 190, 223, 184]
+                }
+            ]
+        ],
+        "id": 180
+    },
+    {
+        "type": "rail",
+        "fromX": 224,
+        "fromY": 199,
+        "toX": 220,
+        "toY": 223,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [224, 199, 227, 222, 220, 223, 217, 200]
+                }
+            ]
+        ],
+        "id": 181
+    },
+    {
+        "type": "rail",
+        "fromX": 231,
+        "fromY": 239,
+        "toX": 178,
+        "toY": 293,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [213, 234, 221, 235, 219, 258, 212, 257]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [218, 263, 206, 283, 199, 278, 211, 259]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [203, 286, 184, 300, 180, 293, 198, 280]
+                }
+            ],
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [230, 240, 228, 263, 220, 263, 223, 240]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [226, 268, 214, 288, 207, 283, 219, 264]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [207, 286, 212, 292, 193, 306, 188, 299]
+                }
+            ]
+        ],
+        "id": 182
+    },
+    {
+        "type": "rail",
+        "fromX": 305,
+        "fromY": 211,
+        "toX": 233,
+        "toY": 239,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [232, 220, 254, 218, 255, 225, 232, 229]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [279, 215, 280, 222, 258, 225, 257, 217]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [304, 212, 305, 219, 283, 222, 282, 214]
+                }
+            ],
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [255, 228, 256, 235, 233, 239, 233, 230]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [280, 224, 281, 232, 258, 236, 258, 227]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [305, 221, 306, 229, 284, 233, 283, 224]
+                }
+            ]
+        ],
+        "id": 183
+    },
+    {
+        "type": "rail",
+        "fromX": 413,
+        "fromY": 75,
+        "toX": 354,
+        "toY": 33,
+        "paths": [
+            [
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [414, 74, 419, 69, 404, 52, 398, 57]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [399, 49, 377, 42, 375, 49, 396, 56]
+                },
+                {
+                    "color": "red",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [375, 41, 372, 48, 351, 40, 354, 33]
+                }
+            ]
+        ],
+        "id": 184
+    },
+    {
+        "type": "rail",
+        "fromX": 332,
+        "fromY": 33,
+        "toX": 394,
+        "toY": 68,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [331, 34, 333, 41, 312, 47, 310, 41]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [304, 46, 311, 49, 301, 70, 294, 67]
+                }
+            ]
+        ],
+        "id": 185
+    },
+    {
+        "type": "rail",
+        "fromX": 348,
+        "fromY": 39,
+        "toX": 374,
+        "toY": 81,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [348, 40, 363, 57, 357, 62, 342, 45]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [365, 59, 380, 76, 374, 81, 359, 64]
+                }
+            ]
+        ],
+        "id": 186
+    },
+    {
+        "type": "rail",
+        "fromX": 302,
+        "fromY": 72,
+        "toX": 376,
+        "toY": 91,
+        "paths": [
+            [
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [303, 73, 325, 77, 324, 84, 302, 80]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [329, 78, 349, 89, 345, 95, 326, 84]
+                },
+                {
+                    "color": "white",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [374, 83, 375, 90, 353, 96, 352, 88]
+                }
+            ]
+        ],
+        "id": 187
+    },
+    {
+        "type": "rail",
+        "fromX": 303,
+        "fromY": 83,
+        "toX": 333,
+        "toY": 178,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [303, 83, 312, 104, 304, 107, 296, 86]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [312, 106, 321, 128, 314, 131, 305, 109]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [322, 130, 331, 151, 323, 154, 315, 133]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [331, 153, 340, 175, 333, 177, 324, 156]
+                }
+            ]
+        ],
+        "id": 188
+    },
+    {
+        "type": "rail",
+        "fromX": 263,
+        "fromY": 72,
+        "toX": 288,
+        "toY": 71,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [263, 72, 266, 65, 288, 71, 285, 78]
+                }
+            ]
+        ],
+        "id": 189
+    },
+    {
+        "type": "rail",
+        "fromX": 250,
+        "fromY": 71,
+        "toX": 245,
+        "toY": 95,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [250, 71, 257, 75, 245, 95, 239, 91]
+                }
+            ]
+        ],
+        "id": 190
+    },
+    {
+        "type": "rail",
+        "fromX": 287,
+        "fromY": 81,
+        "toX": 246,
+        "toY": 106,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [292, 86, 277, 104, 271, 98, 286, 81]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [270, 99, 270, 107, 247, 106, 247, 98]
+                }
+            ]
+        ],
+        "id": 191
+    },
+    {
+        "type": "rail",
+        "fromX": 290,
+        "fromY": 93,
+        "toX": 256,
+        "toY": 160,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [290, 93, 297, 98, 284, 117, 278, 113]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [277, 114, 283, 119, 271, 138, 264, 134]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [263, 136, 270, 141, 258, 159, 250, 155]
+                }
+            ]
+        ],
+        "id": 192
+    },
+    {
+        "type": "rail",
+        "fromX": 241,
+        "fromY": 109,
+        "toX": 24,
+        "toY": 158,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [240, 109, 244, 132, 236, 133, 233, 110]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [244, 134, 248, 157, 240, 158, 237, 135]
+                }
+            ]
+        ],
+        "id": 193
+    },
+    {
+        "type": "rail",
+        "fromX": 258,
+        "fromY": 161,
+        "toX": 328,
+        "toY": 185,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [258, 161, 281, 166, 279, 174, 257, 170]
+                },
+                {
+                    "color": "balck",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [282, 167, 306, 172, 304, 180, 282, 175]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [307, 172, 331, 177, 328, 186, 305, 180]
+                }
+            ]
+        ],
+        "id": 194
+    },
+    {
+        "type": "rail",
+        "fromX": 328,
+        "fromY": 187,
+        "toX": 320,
+        "toY": 211,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": true,
+                    "types": "bridge",
+                    "pos": [327, 188, 332, 193, 322, 211, 315, 207]
+                }
+            ]
+        ],
+        "id": 195
+    },
+    {
+        "type": "rail",
+        "fromX": 320,
+        "fromY": 212,
+        "toX": 389,
+        "toY": 248,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [320, 213, 342, 218, 341, 226, 318, 221]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [345, 219, 367, 224, 365, 232, 343, 227]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [370, 224, 392, 230, 390, 238, 367, 233]
+                }
+            ],
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [318, 223, 340, 229, 338, 236, 316, 231]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [343, 229, 365, 235, 362, 242, 340, 236]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [368, 235, 389, 240, 387, 247, 365, 242]
+                }
+            ]
+        ],
+        "id": 196
+    },
+    {
+        "type": "rail",
+        "fromX": 380,
+        "fromY": 137,
+        "toX": 343,
+        "toY": 169,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [374, 132, 380, 137, 365, 155, 359, 150]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [358, 151, 364, 157, 349, 174, 343, 169]
+                }
+            ]
+        ],
+        "id": 197
+    },
+    {
+        "type": "rail",
+        "fromX": 346,
+        "fromY": 179,
+        "toX": 397,
+        "toY": 226,
+        "paths": [
+            [
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [347, 180, 369, 179, 369, 188, 346, 188]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [375, 182, 393, 197, 387, 204, 370, 187]
+                },
+                {
+                    "color": "blue",
+                    "requiresEngine": false,
+                    "types": "bridge",
+                    "pos": [388, 204, 395, 203, 398, 226, 390, 226]
+                }
+            ]
+        ],
+        "id": 198
+    },
+    {
+        "type": "rail",
+        "fromX": 487,
+        "fromY": 178,
+        "toX": 407,
+        "toY": 242,
+        "paths": [
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [486, 179, 490, 186, 469, 198, 465, 190]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [464, 190, 468, 198, 447, 210, 443, 202]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [441, 203, 446, 210, 425, 222, 421, 214]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [419, 215, 424, 222, 403, 234, 399, 226]
+                }
+            ],
+            [
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [491, 188, 495, 195, 474, 206, 470, 199]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [468, 200, 473, 207, 452, 218, 448, 211]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [446, 212, 451, 219, 430, 230, 426, 223]
+                },
+                {
+                    "color": "any",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [424, 224, 428, 232, 408, 242, 404, 235]
+                }
+            ]
+        ],
+        "id": 199
+    },
+    {
+        "type": "rail",
+        "fromX": 411,
+        "fromY": 242,
+        "toX": 511,
+        "toY": 253,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [412, 243, 436, 243, 436, 252, 412, 252]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [437, 243, 461, 243, 461, 252, 437, 252]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [462, 243, 486, 243, 486, 252, 462, 252]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [487, 244, 511, 244, 511, 253, 487, 253]
+                }
+            ]
+        ],
+        "id": 200
+    },
+    {
+        "type": "rail",
+        "fromX": 406,
+        "fromY": 247,
+        "toX": 389,
+        "toY": 291,
+        "paths": [
+            [
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [406, 247, 412, 270, 404, 272, 399, 249]
+                },
+                {
+                    "color": "green",
+                    "requiresEngine": false,
+                    "types": "regular",
+                    "pos": [405, 273, 411, 278, 395, 296, 389, 291]
+                }
+            ]
+        ],
+        "id": 201
+    },
+    {
+        "type": "rail",
+        "fromX": 389,
+        "fromY": 307,
+        "toX": 415,
+        "toY": 347,
+        "paths": [
+            [
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [396, 304, 408, 320, 402, 323, 391, 307]
+                },
+                {
+                    "color": "black",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [404, 326, 407, 345, 414, 344, 410, 325]
+                }
+            ]
+        ],
+        "id": 202
+    },
+    {
+        "type": "rail",
+        "fromX": 419,
+        "fromY": 353,
+        "toX": 486,
+        "toY": 331,
+        "paths": [
+            [
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [422, 350, 436, 338, 432, 333, 417, 347]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [440, 335, 459, 331, 457, 325, 438, 330]
+                },
+                {
+                    "color": "orange",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [465, 324, 484, 331, 482, 336, 463, 330]
+                }
+            ]
+        ],
+        "id": 203
+    },
+    {
+        "type": "rail",
+        "fromX": 452,
+        "fromY": 384,
+        "toX": 481,
+        "toY": 343,
+        "paths": [
+            [
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [453, 382, 467, 368, 463, 363, 448, 378]
+                },
+                {
+                    "color": "yellow",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [470, 364, 486, 350, 480, 345, 466, 360]
+                }
+            ]
+        ],
+        "id": 204
+    },
+    {
+        "type": "rail",
+        "fromX": 497,
+        "fromY": 336,
+        "toX": 535,
+        "toY": 306,
+        "paths": [
+            [
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [497, 334, 512, 320, 507, 315, 493, 330]
+                },
+                {
+                    "color": "pink",
+                    "requiresEngine": false,
+                    "types": "tunnel",
+                    "pos": [515, 318, 535, 313, 533, 307, 514, 312]
+                }
+            ]
+        ],
+        "id": 205
+    }
+]
