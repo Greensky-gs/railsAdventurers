@@ -49,6 +49,6 @@ const playerColors: Record<playerColor, ColorResolvable> = {
     black: '#1e1a1a',
     white: '#FCFCFC',
     purple: '#BD84B1'
-}
+};
 
 export { colorsData, playerColors };

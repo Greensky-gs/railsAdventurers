@@ -1,10 +1,10 @@
-import { User } from "discord.js";
-import { Game } from "./Game";
-import { playerColor, playerState } from "../typings/player";
-import { decks } from "../typings/game";
-import { wagonKey } from "../typings/datas";
-import { Simulator } from "./Simulator";
-import { getDestinations, getPaths, getTouches } from "../utils/core";
+import { User } from 'discord.js';
+import { Game } from './Game';
+import { playerColor, playerState } from '../typings/player';
+import { decks } from '../typings/game';
+import { wagonKey } from '../typings/datas';
+import { Simulator } from './Simulator';
+import { getDestinations, getPaths, getTouches } from '../utils/core';
 
 export class Player {
     private _user: User;
@@ -30,11 +30,11 @@ export class Player {
     private _state: playerState = 'idle';
     private _wagons: number = 40;
 
-    constructor({ user, index, game, color }: { user: User; index: number; game: Game; color: playerColor; }) {
+    constructor({ user, index, game, color }: { user: User; index: number; game: Game; color: playerColor }) {
         this._user = user;
         this._index = index;
         this.game = game;
-        this._color = color
+        this._color = color;
     }
 
     // Props
@@ -45,10 +45,10 @@ export class Player {
         return this._color;
     }
     public get user() {
-        return this._user
+        return this._user;
     }
     public get destinations() {
-        return this.decks.destinations
+        return this.decks.destinations;
     }
     public get finishedDestinationList() {
         return this.finishedDestinations;
@@ -60,7 +60,7 @@ export class Player {
         return new Simulator(this.decks);
     }
     public get wagons() {
-        return this._wagons
+        return this._wagons;
     }
     public get wagonsCard() {
         return this.decks.wagons;
@@ -72,17 +72,19 @@ export class Player {
     // On end
     private connectionTable() {
         const table: number[][] = [];
-        this.game.placed.filter(x => x.player === this._index).forEach((placed) => {
-            const ids = getTouches().find(y => y.by === getPaths().find(x => x.id === placed.rail).id);
-            const countainsOne = table.find(x => x.includes(ids.from) || x.includes(ids.to))
+        this.game.placed
+            .filter((x) => x.player === this._index)
+            .forEach((placed) => {
+                const ids = getTouches().find((y) => y.by === getPaths().find((x) => x.id === placed.rail).id);
+                const countainsOne = table.find((x) => x.includes(ids.from) || x.includes(ids.to));
 
-            if (countainsOne) {
-                if (!countainsOne.includes(ids.from)) countainsOne.push(ids.from)
-                if (!countainsOne.includes(ids.to)) countainsOne.push(ids.to)
-            } else {
-                table.push([ ids.from, ids.to ]);
-            }
-        })
+                if (countainsOne) {
+                    if (!countainsOne.includes(ids.from)) countainsOne.push(ids.from);
+                    if (!countainsOne.includes(ids.to)) countainsOne.push(ids.to);
+                } else {
+                    table.push([ids.from, ids.to]);
+                }
+            });
 
         return table;
     }
@@ -91,27 +93,27 @@ export class Player {
         let done = 0;
 
         this.destinations.forEach((dest) => {
-            const destination = getDestinations().find(x => x.id === dest);
-            const connection = table.find(x => x.includes(destination.from));
+            const destination = getDestinations().find((x) => x.id === dest);
+            const connection = table.find((x) => x.includes(destination.from));
 
             if (!connection) {
                 this.removePoints(destination.points);
-                return
+                return;
             }
             if (!connection.includes(destination.to)) {
-                this.removePoints(destination.points)
-                return
+                this.removePoints(destination.points);
+                return;
             }
             this.addPoints(destination.points);
-            done++
-        })
+            done++;
+        });
 
         return {
             done,
             table,
             player: this,
             gtBonus: false
-        }
+        };
     }
 
     // Game
@@ -119,19 +121,19 @@ export class Player {
         this._state = state;
     }
     public addDestinations(...id: number[]) {
-        this.decks.destinations.push(...id)
-        this.decks.destinations = [...new Set(this.decks.destinations)]
+        this.decks.destinations.push(...id);
+        this.decks.destinations = [...new Set(this.decks.destinations)];
     }
     public keepOnlyThese(id: number[]) {
         const current = this.decks.destinations;
         this.decks.destinations = id;
 
-        const removed = current.filter(x => !id.includes(x));
-        this.removeDestination(...removed)
+        const removed = current.filter((x) => !id.includes(x));
+        this.removeDestination(...removed);
         return removed;
     }
     public removeDestination(...ids: number[]) {
-        this.decks.destinations = this.decks.destinations.filter(x => !ids.includes(x));
+        this.decks.destinations = this.decks.destinations.filter((x) => !ids.includes(x));
 
         return ids;
     }
@@ -140,11 +142,11 @@ export class Player {
             this.decks.wagons[card]++;
         });
     }
-    public removeWagon(...cards: { key: wagonKey; count: number; }[]) {
+    public removeWagon(...cards: { key: wagonKey; count: number }[]) {
         cards.forEach((card) => {
-            this.decks.wagons[card.key]-=card.count;
+            this.decks.wagons[card.key] -= card.count;
             if (this.decks.wagons[card.key] < 0) this.decks.wagons[card.key] = 0;
-        })
+        });
     }
     public removeWagons(count: number) {
         this._wagons -= count;
@@ -160,17 +162,17 @@ export class Player {
             5: 10,
             6: 15,
             9: 27
-        }
+        };
 
         this.addPoints(map[length]);
     }
     public hasGt() {
-        this.addPoints(10)
+        this.addPoints(10);
     }
 
     // Core
     public addPoints(count: number) {
-        this._points+= count;
+        this._points += count;
     }
     private removePoints(count: number) {
         this._points -= count;

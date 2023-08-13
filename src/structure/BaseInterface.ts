@@ -1,8 +1,8 @@
-import { InterfaceCallback, InterfaceEndReason } from "../typings/core";
+import { InterfaceCallback, InterfaceEndReason } from '../typings/core';
 
 export class BaseInterface {
     public ended: boolean = false;
-    public callback: InterfaceCallback = () => {}
+    public callback: InterfaceCallback = () => {};
 
     public on(callback: InterfaceCallback) {
         this.callback = callback;

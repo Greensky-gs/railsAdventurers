@@ -1,20 +1,20 @@
-import { AmethystCommand } from "amethystjs";
-import { ApplicationCommandOptionType, TextChannel } from "discord.js";
-import { Game } from "../structure/Game";
+import { AmethystCommand } from 'amethystjs';
+import { ApplicationCommandOptionType, TextChannel } from 'discord.js';
+import { Game } from '../structure/Game';
 
 export default new AmethystCommand({
     name: 'test',
-    description: "Teste le bot",
+    description: 'Teste le bot',
     options: [
         {
             name: 'utilisateur',
-            description: "User",
+            description: 'User',
             type: ApplicationCommandOptionType.User,
             required: true
         }
     ]
-}).setChatInputRun(async({ interaction, options }) => {
-    await interaction.reply('Starting')
+}).setChatInputRun(async ({ interaction, options }) => {
+    await interaction.reply('Starting');
     const user = options.getUser('utilisateur');
 
     const game = new Game({
@@ -22,4 +22,4 @@ export default new AmethystCommand({
         users: [interaction.user, user],
         colors: ['black', 'white']
     });
-})
+});
