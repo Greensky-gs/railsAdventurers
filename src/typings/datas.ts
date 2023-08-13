@@ -5,6 +5,7 @@ import cards from '../data/cards.json';
 export type colorType<Color extends color> = {
     color: Color;
     code: ColorResolvable;
+    name: string;
 };
 
 export type cardType = 'wagon' | 'destination';

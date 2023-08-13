@@ -1,7 +1,8 @@
 import points from '../data/points.json';
-import { touch } from '../typings/datas';
+import { card, cardType, touch } from '../typings/datas';
 import { pointKind, pointType } from '../typings/points';
 import touches from '../data/touches.json';
+import cards from '../data/cards.json';
 
 export const getPoints = (): pointType<pointKind>[] => points as pointType<pointKind>[];
 export const getCounters = (): pointType<'counter'>[] =>
@@ -36,3 +37,20 @@ export const getPathPos = (
 };
 export const getPaths = (): pointType<'rail'>[] => getPoints().filter((x) => x.type === 'rail') as pointType<'rail'>[];
 export const getTouches = (): touch[] => touches;
+export const getDestinations = (): card<'destination'>[] => cards.destinations as card<'destination'>[];
+export const destinationSentence = (id: number, description = false) => {
+    const dest = getDestinations().find(x => x.id === id)
+    const find = (idx: number) => getCities().find(x => x.id === idx);
+
+    if (description) return `Reliez ${find(dest.from).name} à ${find(dest.to).name} pour ${dest.points} points`
+    return `${find(dest.from).name} → ${find(dest.to).name} ( ${dest.points} points )`
+}
+export const getPathsFor = (id: number) => {
+    const touches = getTouches();
+    const paths = getPaths();
+
+    return touches.filter(x => x.from === id || x.to === id).map(x => paths.find(y => y.id === x.by))
+}
+export const getAllTouchesWith = (id: number) => getTouches().filter(x => x.from === id || x.to === id);
+export const touchesToPaths = (touches: touch[]) => getPaths().filter(x => touches.map(y => y.by).includes(x.id))
+export const getCitiesTouching = (touches: touch[]) => getCities().filter(x => touches.find(y => y.from === x.id || y.to === x.id));

@@ -13,6 +13,7 @@ export const client = new AmethystClient(
         eventsFolder: './dist/events',
         preconditionsFolder: './dist/preconditions',
         autocompleteListenersFolder: './dist/autocompletes',
+        buttonsFolder: './dist/buttons',
         debug: true
     }
 );
