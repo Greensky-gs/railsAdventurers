@@ -1,8 +1,9 @@
-import { createCanvas, loadImage, CanvasRenderingContext2D, Canvas } from "canvas";
+import { createCanvas, loadImage, CanvasRenderingContext2D, Canvas, Image } from "canvas";
 import { Game } from "./Game";
 import { log4js } from "amethystjs";
 import { getCounterPos, getPathPos, getPaths } from "../utils/core";
 import { Player } from "./Player";
+import { BufferResolvable } from "discord.js";
 
 export class Generator {
     private game: Game;
@@ -23,10 +24,91 @@ export class Generator {
         this.placeCounters(context)
         this.placePlaced(context)
 
-            return this.redimentionate(canvas);
+        return this.redimentionate(canvas);
     }
-    // Core
-    private redimentionate(canvas: Canvas) {
+    public async generateEnd(users: { done: number; player: Player }[]): Promise<BufferResolvable> {
+        return new Promise(async(resolve) => {    
+            const canvas = createCanvas(512, 512)
+            const ctx = canvas.getContext("2d");
+            
+            const infoColor = '#231e60';
+            
+            const backGround = await loadImage('./assets/background/' + Math.floor(Math.random() * 4) +  '.png')
+            ctx.drawImage(backGround, 0, 0)
+            const cY = (i: number) => (40 * (i + 1)) + (90 * i)
+
+            let done = 0
+            const drawUserRanking = async(x: number, y: number, points: number, profileImage: Image, username: string, i: number) => {
+            ctx.fillStyle = infoColor;
+            ctx.roundRect(x, y, canvas.width - 2 * x, 90, 10)
+            ctx.fill();
+      
+            // Draw points
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText(points.toString(), x + 100, y + 70);
+      
+            // Draw rounded profile image
+            const imageX = x + 20;
+            const imageY = y + 10;
+            const imageSize = 70;
+            const imageRadius = 10;
+
+            ctx.save();
+            ctx.roundRect(imageX, imageY, imageSize, imageSize, imageRadius)
+            ctx.clip();
+            ctx.drawImage(profileImage, imageX, imageY, imageSize, imageSize);
+            ctx.restore();
+      
+            // Draw username
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText(username, x + 100, y + 35);
+
+            // Draw position
+            ctx.fillStyle = '#FFD700'
+            ctx.font = 'bold 60px Arial'
+            ctx.fillText((i + 1).toString(), x + 420, y + 65);
+
+            done++;
+            if (done === users.length) {
+                resolve(canvas.toBuffer());
+            }
+            }
+            
+            
+      
+      // Extend CanvasRenderingContext2D to draw rounded rectangles
+      CanvasRenderingContext2D.prototype.roundRect = function(x: number, y: number, width: number, height: number, radius: number) {
+        this.beginPath();
+        this.moveTo(x + radius, y);
+        this.lineTo(x + width - radius, y);
+        this.quadraticCurveTo(x + width, y, x + width, y + radius);
+        this.lineTo(x + width, y + height - radius);
+        this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        this.lineTo(x + radius, y + height);
+        this.quadraticCurveTo(x, y + height, x, y + height - radius);
+        this.lineTo(x, y + radius);
+        this.quadraticCurveTo(x, y, x + radius, y);
+        this.closePath();
+        return this;
+    };
+
+    const promisify = ({ player }: {player: Player}, i: number) => {
+        return new Promise(async resolve => {
+            const img = await loadImage(player.user.displayAvatarURL({ forceStatic: true, extension: 'png' }));
+            await drawUserRanking(10, cY(i), player.points, img, player.user.username, i);
+            
+            resolve('ok')
+        })
+    }
+    
+    const promises = users.map((x, i) => promisify(x, i));
+    await Promise.all([promises])
+    });
+}
+// Core
+private redimentionate(canvas: Canvas) {
         const ratio = canvas.width / canvas.height;
         const width = 850;
         const height = width / ratio;

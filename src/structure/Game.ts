@@ -55,7 +55,6 @@ export class Game {
 
     // Engine
     private wagonPic(wagon: wagonKey) {
-        console.log(wagon);
         return new AttachmentBuilder(`./assets/cards/wagons/${wagon}.jpg`, { name: `${wagon}.jpg` })
     }
     private getPlayer(resolvable: Interaction | User) {
@@ -448,7 +447,6 @@ export class Game {
                 }
                 if (selectedPath[0].types === 'tunnel') {
                     const drawed = new Array(3).fill(null).map((x) => this.drawWag());
-                    console.log(drawed.map(this.wagonPic))
                     const rep = await interaction.followUp({
                         fetchReply: true,
                         ephemeral: false,
@@ -643,7 +641,7 @@ export class Game {
         this.decks.wagons[wagonKey]--;
         this.defalsed.wagons[wagonKey]++;
     }
-    private end() {
+    private async end() {
         this.clearCollectors();
 
         this.message.edit({
@@ -677,7 +675,14 @@ export class Game {
             datas.splice(0, slice, ...highest);
         }
 
-        
+        const img = await this.generator.generateEnd(datas);
+        this.channel.send({
+            files: [new AttachmentBuilder(img, { name: 'classement.png' })],
+            reply: {
+                messageReference: this.message,
+                failIfNotExists: false
+            }
+        }).catch(log4js.trace)
     }
 
     private clearCollectors() {
