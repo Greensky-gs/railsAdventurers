@@ -183,7 +183,7 @@ export class Game {
                 componentType: ComponentType.StringSelect,
                 user: player.user,
                 message: reply
-            });
+            }).catch(log4js.trace);
             if (!rep) return;
 
             const datas = rep.values[0].split('.');
@@ -202,7 +202,7 @@ export class Game {
 
         let stopped = false;
         for (let i = 0; i < path.length; i++) {
-            const res = await choose();
+            const res = await choose().catch(log4js.trace);
             if (res === 'restart') {
                 simulator.reset();
                 choice = [];
@@ -322,7 +322,8 @@ export class Game {
         const rep = await waitForInteraction({
             componentType: ComponentType.StringSelect,
             user: interaction.user,
-            message: reply
+            message: reply,
+            time: 180000
         }).catch(log4js.trace);
 
         const ids = rep ? rep.values.map((x) => parseInt(x)) : [drawed[random({ max: drawed.length })]];
@@ -581,12 +582,12 @@ export class Game {
                     return retreat();
                 }
 
-                const way = await this.getWayToPlace(player, selectedPath, interaction, reply);
-                const wayArray = Object.keys(way).map((x: wagonKey) => ({ key: x, count: way[x] }));
+                const way = await this.getWayToPlace(player, selectedPath, interaction, reply).catch(log4js.trace);
                 if (!way) {
                     interaction.deleteReply().catch(log4js.trace);
                     return retreat();
                 }
+                const wayArray = Object.keys(way).map((x: wagonKey) => ({ key: x, count: way[x] }));
                 if (selectedPath[0].types === 'tunnel') {
                     const drawed = new Array(3).fill(null).map((x) => this.drawWag());
                     const rep = (await interaction.followUp({
@@ -596,7 +597,7 @@ export class Game {
                             secondCity.name
                         }** avec ${sentencePack(way)}, voici vos trois cartes :`,
                         files: drawed.map((x) => this.wagonPic(x))
-                    })) as Message<true>;
+                    }).catch(log4js.trace)) as Message<true>;
                     if (!rep) return retreat();
 
                     const toPay = drawed.filter((x) => x === 'engine' || x === selectedPath[0].color).length;
@@ -750,6 +751,8 @@ export class Game {
                 this.edit();
                 this.listen();
                 baseCollector.stop();
+            } else {
+                this.edit(true);
             }
             interaction.deleteReply().catch(log4js.trace);
         });
@@ -832,17 +835,15 @@ export class Game {
     private async end() {
         this.clearCollectors();
 
-        this.message
-            .edit({
+        this?.message?.edit({
                 components: [],
                 content: 'Partie terminée'
-            })
-            .catch(log4js.trace);
+            })?.catch(log4js.trace);
 
         const datas = this._players
             .map((x) => x.calculateEndPoints())
             .sort((a, b) => a.player.points + b.player.points);
-        const gtWinners = datas.filter((x) => x.player.points === datas[0].player.points);
+        const gtWinners = datas.filter((x) => x.player.points === datas[0].player.points && x.player.points > 0);
 
         gtWinners.forEach((gt, i) => {
             datas[i].gtBonus = true;
@@ -896,7 +897,7 @@ export class Game {
         const plate = await this.generator.generate();
         if (!plate) return;
 
-        return plate.toBuffer();
+        return plate.toBuffer('image/jpeg');
     }
     private generateComponents() {
         return [
@@ -926,19 +927,21 @@ export class Game {
         ];
     }
     private get messageContent() {
+        if (!this.started) return this._players.filter(x => x.state === 'idle' || x.state === 'preparing').map(x => `<@${x.user.id}>`).join(', ')
         return `<@${this.current.user.id}>`;
     }
     private async generateContent(): Promise<MessageEditOptions & MessageCreateOptions> {
         const plate = await this.generatePlate();
         if (!plate) return;
 
-        const attach = new AttachmentBuilder(plate, { name: 'plate.png' });
+        const attach = new AttachmentBuilder(plate, { name: 'plate.jpg' });
         if (!this.started)
             return {
                 files: [attach],
                 components: [
                     row(button({ label: 'Prendre les destinations', id: 'PickDestinations', style: 'Secondary' }))
-                ]
+                ],
+                content: this.messageContent
             };
         return {
             files: [attach],

@@ -4,13 +4,16 @@ import {
     ButtonBuilder,
     ButtonInteraction,
     ButtonStyle,
-    Message
+    Message,
+    User
 } from 'discord.js';
 import { Ids } from '../data/ids';
 import { wagonKey } from '../typings/datas';
 import { colorsData } from '../data/colors';
 import { deckPart } from '../typings/game';
 import { log4js } from 'amethystjs';
+import { games } from '../cache/games';
+import { matchmakings } from '../cache/matchmakings';
 
 export const random = ({ max = 100, min = 0 }: { max?: number; min?: number }) =>
     Math.floor(Math.random() * max - min) + min;
@@ -70,3 +73,5 @@ export const setDeleteTimer = (resolvable: Message<true> | ButtonInteraction, de
 };
 export const nameWagon = (key: wagonKey) => (key === 'engine' ? 'locomotive' : `wagon ${colorsData[key].name}`);
 export const plurial = (int: number | any[]) => ((typeof int === 'number' ? int : int.length) === 1 ? '' : 's');
+export const isPlaying = (resolvable: User | string) => !!games.find(x => x.players.find(y => y.user.id === (resolvable instanceof User ? resolvable.id : resolvable)))
+export const matchmaked = (user: User) => matchmakings.includes(user.id)

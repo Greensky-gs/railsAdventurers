@@ -16,7 +16,7 @@ export class Generator {
         const canvas = createCanvas(this.dimens.width, this.dimens.height);
         const context = canvas.getContext('2d');
 
-        const plate = await loadImage('./assets/plate.png').catch(log4js.trace);
+        const plate = await loadImage('./assets/plate.jpg').catch(log4js.trace);
         if (!plate) return;
 
         context.drawImage(plate, 0, 0);
@@ -24,9 +24,10 @@ export class Generator {
         this.placeCounters(context);
         this.placePlaced(context);
 
-        return this.redimentionate(canvas);
+        // return this.redimentionate(canvas);
+        return canvas;
     }
-    public async generateEnd(users: { done: number; player: Player }[]): Promise<BufferResolvable> {
+    public async generateEnd(users: { done: number; player: Player; gtBonus: boolean }[]): Promise<BufferResolvable> {
         return new Promise(async (resolve) => {
             const canvas = createCanvas(512, 512);
             const ctx = canvas.getContext('2d');
@@ -44,7 +45,8 @@ export class Generator {
                 points: number,
                 profileImage: Image,
                 username: string,
-                i: number
+                i: number,
+                gtBonus: boolean
             ) => {
                 ctx.fillStyle = infoColor;
                 ctx.roundRect(x, y, canvas.width - 2 * x, 90, 10);
@@ -77,6 +79,17 @@ export class Generator {
                 ctx.font = 'bold 60px Arial';
                 ctx.fillText((i + 1).toString(), x + 420, y + 65);
 
+                // Draw bonus
+                if (gtBonus) {
+                    const img = await loadImage('./assets/gt.jpg');
+                    const ratio = img.width / img.height;
+
+                    const width = 20;
+                    const height = width / ratio;
+
+                    ctx.drawImage(img, x + 150, y + 45, width, height)
+                }
+
                 done++;
                 if (done === users.length) {
                     resolve(canvas.toBuffer());
@@ -105,10 +118,10 @@ export class Generator {
                 return this;
             };
 
-            const promisify = ({ player }: { player: Player }, i: number) => {
+            const promisify = ({ player, gtBonus }: { player: Player; gtBonus: boolean }, i: number) => {
                 return new Promise(async (resolve) => {
                     const img = await loadImage(player.user.displayAvatarURL({ forceStatic: true, extension: 'png' }));
-                    await drawUserRanking(10, cY(i), player.points, img, player.user.username, i);
+                    await drawUserRanking(10, cY(i), player.points, img, player.user.username, i, gtBonus);
 
                     resolve('ok');
                 });

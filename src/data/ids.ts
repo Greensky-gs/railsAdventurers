@@ -13,5 +13,9 @@ export enum Ids {
     PickCancel = 'draw.cancel',
     PickMenu = 'draw.menu',
     Yes = 'yes',
-    No = 'no'
+    No = 'no',
+    PlayAccept = 'cmd.game.accept',
+    PlayDecline = 'cmd.game.decline',
+    PlayStart = 'cmd.game.start',
+    PlayCancel = 'cmd.game.cancel'
 }
