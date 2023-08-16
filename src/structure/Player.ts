@@ -5,6 +5,7 @@ import { decks } from '../typings/game';
 import { wagonKey } from '../typings/datas';
 import { Simulator } from './Simulator';
 import { getDestinations, getPaths, getTouches } from '../utils/core';
+import { endReturn } from '../typings/core';
 
 export class Player {
     private _user: User;
@@ -88,7 +89,7 @@ export class Player {
 
         return table;
     }
-    public calculateEndPoints() {
+    public calculateEndPoints(): endReturn {
         const table = this.connectionTable();
         let done = 0;
 

@@ -48,6 +48,7 @@ import { color, pointType, rails } from '../typings/points';
 import { colorsData } from '../data/colors';
 import { DrawWagInterface } from './DrawWagInterface';
 import { games } from '../cache/games';
+import { matchmakings } from '../cache/matchmakings';
 
 export class Game {
     private message: Message<true>;
@@ -72,7 +73,7 @@ export class Game {
     private collectors: InteractionCollector<CollectedInteraction>[] = [];
     private drawWagInterface = new DrawWagInterface(this);
     private lastAction: actionButtonType;
-    private callbacks: cancelCallback[] = [];
+    private _id: number = Date.now()
 
     constructor(options: gameOptions) {
         this.users = options.users;
@@ -88,6 +89,9 @@ export class Game {
     }
     public get placed() {
         return this._placed;
+    }
+    public get id() {
+        return this._id;
     }
 
     // Engine
@@ -902,6 +906,7 @@ export class Game {
         this.defalsed.wagons[wagonKey]++;
     }
     private async end() {
+        games.delete(this._id);
         this.clearCollectors();
 
         this?.message
@@ -1103,7 +1108,12 @@ export class Game {
         this.message = (await this.channel.send(content).catch(log4js.trace)) as Message<true>;
         if (!this.message) return this.end();
 
-        games.push(this);
+        games.set(this._id, this);
+        const indexes = this._players.forEach(p => {
+            const index = matchmakings.indexOf(p.user.id);
+            if (index === -1) return;
+            matchmakings.splice(index, 1)
+        });
         this.listenForPreparation();
     }
 }
