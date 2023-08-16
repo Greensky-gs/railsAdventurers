@@ -73,5 +73,6 @@ export const setDeleteTimer = (resolvable: Message<true> | ButtonInteraction, de
 };
 export const nameWagon = (key: wagonKey) => (key === 'engine' ? 'locomotive' : `wagon ${colorsData[key].name}`);
 export const plurial = (int: number | any[]) => ((typeof int === 'number' ? int : int.length) === 1 ? '' : 's');
-export const isPlaying = (resolvable: User | string) => !!games.find(x => x.players.find(y => y.user.id === (resolvable instanceof User ? resolvable.id : resolvable)))
-export const matchmaked = (user: User) => matchmakings.includes(user.id)
+export const isPlaying = (resolvable: User | string) =>
+    !!games.find((x) => x.players.find((y) => y.user.id === (resolvable instanceof User ? resolvable.id : resolvable)));
+export const matchmaked = (user: User) => matchmakings.includes(user.id);

@@ -1,1 +1,1 @@
-export const matchmakings: string[] = []
+export const matchmakings: string[] = [];

@@ -53,6 +53,14 @@ export const notPlaying = (user: User) =>
 export const baseInfo = (user: User) => base(user).setColor('#BB35E2');
 export const drawWag = (user: User) =>
     baseInfo(user).setTitle('Pioche').setDescription(`Piochez jusqu'a 2 cartes wagons`);
-export const matchmakingEmbed = (user: User) => baseDenied(user).setTitle("Matchmaking en cours").setDescription(`Vous êtes déjà enregistré dans une partie`)
-export const invalidUsers = (user: User, users: User[]) => baseDenied(user).setTitle("Utilisateurs invalides").setDescription(`${users.map(x => `<@${x.id}>`).join(' ')} ${users.length === 1 ? "n'est pas un utilisateur valide" : "ne sont pas des utilisateurs valides"}`)
-export const canceled = () => new EmbedBuilder().setTitle("Annulé").setColor('#702F36')
+export const matchmakingEmbed = (user: User) =>
+    baseDenied(user).setTitle('Matchmaking en cours').setDescription(`Vous êtes déjà enregistré dans une partie`);
+export const invalidUsers = (user: User, users: User[]) =>
+    baseDenied(user)
+        .setTitle('Utilisateurs invalides')
+        .setDescription(
+            `${users.map((x) => `<@${x.id}>`).join(' ')} ${
+                users.length === 1 ? "n'est pas un utilisateur valide" : 'ne sont pas des utilisateurs valides'
+            }`
+        );
+export const canceled = () => new EmbedBuilder().setTitle('Annulé').setColor('#702F36');

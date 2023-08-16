@@ -87,7 +87,7 @@ export class Generator {
                     const width = 20;
                     const height = width / ratio;
 
-                    ctx.drawImage(img, x + 150, y + 45, width, height)
+                    ctx.drawImage(img, x + 150, y + 45, width, height);
                 }
 
                 done++;

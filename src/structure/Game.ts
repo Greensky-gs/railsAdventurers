@@ -72,7 +72,7 @@ export class Game {
     private collectors: InteractionCollector<CollectedInteraction>[] = [];
     private drawWagInterface = new DrawWagInterface(this);
     private lastAction: actionButtonType;
-    private callbacks: cancelCallback[] = []
+    private callbacks: cancelCallback[] = [];
 
     constructor(options: gameOptions) {
         this.users = options.users;
@@ -116,7 +116,7 @@ export class Game {
         const choose = async (index: number) => {
             index = index % path.length;
             const rail = path[index];
-            
+
             const options = () => {
                 const opts: { key: wagonKey; count: number }[] = [];
 
@@ -124,7 +124,7 @@ export class Game {
                     opts.push({
                         key: 'engine',
                         count: 1
-                    })
+                    });
                 }
                 const buildable = simulator.maximumEnginesBuild(color === 'any' ? undefined : color);
                 buildable.forEach((x) => {
@@ -140,7 +140,7 @@ export class Game {
                                 opts.push({
                                     key: pickedColor,
                                     count: 1
-                                })
+                                });
                             }
                         } else {
                             simulator.usable.forEach((usable) => {
@@ -160,11 +160,11 @@ export class Game {
             };
             if (options().length === 0) {
                 return 'restart';
-            }    
+            }
 
             const rowBuilder = () => {
                 const opts = options();
-                const arrays: ActionRowBuilder<ButtonBuilder>[] = []
+                const arrays: ActionRowBuilder<ButtonBuilder>[] = [];
 
                 opts.forEach((opt, i) => {
                     if (i % 5 === 0) arrays.push(row());
@@ -179,17 +179,23 @@ export class Game {
                             yellow: 'jaune',
                             pink: 'violette',
                             red: 'rouge'
-                        }
+                        };
                         return values[cl];
-                    }
+                    };
                     arrays[arrays.length - 1].addComponents(
                         button({
-                            label: `${opt.count === 3 ? `Locomotive ${name(opt.key as color)}` : opt.key === 'engine' ? 'Locomotive' : `Wagon ${colorsData[opt.key]?.name}`}`,
+                            label: `${
+                                opt.count === 3
+                                    ? `Locomotive ${name(opt.key as color)}`
+                                    : opt.key === 'engine'
+                                    ? 'Locomotive'
+                                    : `Wagon ${colorsData[opt.key]?.name}`
+                            }`,
                             style: 'Secondary',
                             custom: `${opt.key}.${opt.count}`
                         })
-                    )
-                })
+                    );
+                });
 
                 return arrays;
             };
@@ -474,7 +480,7 @@ export class Game {
                 after();
                 this.index++;
                 player.setState('ready');
-                this.lastAction = 'destinations'
+                this.lastAction = 'destinations';
                 this.edit();
             }
             if (interaction.customId === Ids.Place) {
@@ -617,14 +623,16 @@ export class Game {
                 const wayArray = Object.keys(way).map((x: wagonKey) => ({ key: x, count: way[x] }));
                 if (selectedPath[0].types === 'tunnel') {
                     const drawed = new Array(3).fill(null).map((x) => this.drawWag());
-                    const rep = (await interaction.followUp({
-                        fetchReply: true,
-                        ephemeral: false,
-                        content: `Vous allez construire le tunnel entre **${firstCity.name}** et **${
-                            secondCity.name
-                        }** avec ${sentencePack(way)}, voici vos trois cartes :`,
-                        files: drawed.map((x) => this.wagonPic(x))
-                    }).catch(log4js.trace)) as Message<true>;
+                    const rep = (await interaction
+                        .followUp({
+                            fetchReply: true,
+                            ephemeral: false,
+                            content: `Vous allez construire le tunnel entre **${firstCity.name}** et **${
+                                secondCity.name
+                            }** avec ${sentencePack(way)}, voici vos trois cartes :`,
+                            files: drawed.map((x) => this.wagonPic(x))
+                        })
+                        .catch(log4js.trace)) as Message<true>;
                     if (!rep) return retreat();
 
                     const toPay = drawed.filter((x) => x === 'engine' || x === selectedPath[0].color).length;
@@ -649,14 +657,12 @@ export class Game {
                     simulator.removeWagon(...wayArray);
                     const penalities = await this.getWayToPlace(
                         player,
-                        new Array(toPay)
-                            .fill(null)
-                            .map((x) => ({
-                                color: 'any',
-                                requiresEngine: true,
-                                pos: [0, 0, 0, 0, 0, 0, 0, 0],
-                                types: 'tunnel'
-                            })),
+                        new Array(toPay).fill(null).map((x) => ({
+                            color: 'any',
+                            requiresEngine: true,
+                            pos: [0, 0, 0, 0, 0, 0, 0, 0],
+                            types: 'tunnel'
+                        })),
                         interaction,
                         rep,
                         simulator,
@@ -705,12 +711,14 @@ export class Game {
                 after();
                 retreat();
 
-                const msg = await this.channel.send({
-                    content: `<@${player.user.id}> a placé des wagons de **${firstCity.name}** à **${secondCity.name}**`,
-                    allowedMentions: {
-                        parse: []
-                    }
-                }).catch(log4js.trace)
+                const msg = await this.channel
+                    .send({
+                        content: `<@${player.user.id}> a placé des wagons de **${firstCity.name}** à **${secondCity.name}**`,
+                        allowedMentions: {
+                            parse: []
+                        }
+                    })
+                    .catch(log4js.trace);
                 if (msg) setDeleteTimer(msg, 10000);
                 interaction.deleteReply().catch(log4js.trace);
                 this.lastAction = 'place';
@@ -723,30 +731,36 @@ export class Game {
                 player.setState('ready');
 
                 if (res === 'cancel') return;
-                player.addWagon(...res.map(x => x.key));
+                player.addWagon(...res.map((x) => x.key));
 
                 this.index++;
                 after();
-                this.lastAction = 'wagons'
-                
+                this.lastAction = 'wagons';
+
                 this.edit(true);
                 const log = () => {
-                    const showable = res.filter(x => x.show);
-                    const hide = res.filter(x => !x.show);
+                    const showable = res.filter((x) => x.show);
+                    const hide = res.filter((x) => !x.show);
 
                     if (showable.length > 0 && hide.length > 0) {
-                        return `${showable.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')} et ${['une carte mystère', 'deux cartes mystères'][hide.length - 1]}`
+                        return `${showable
+                            .map((x) => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`)
+                            .join(', ')} et ${['une carte mystère', 'deux cartes mystères'][hide.length - 1]}`;
                     }
                     if (showable.length > 0) {
-                        return showable.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')
+                        return showable
+                            .map((x) => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`)
+                            .join(', ');
                     }
-                    return ['une carte mystère', 'deux cartes mystères'][hide.length - 1]
-                }
+                    return ['une carte mystère', 'deux cartes mystères'][hide.length - 1];
+                };
 
-                const showable = res.filter(x => x.show);
-                const msg = await this.channel.send({
-                    content: `<@${interaction.user.id}> a pioché : ${log()}`
-                }).catch(log4js.trace)
+                const showable = res.filter((x) => x.show);
+                const msg = await this.channel
+                    .send({
+                        content: `<@${interaction.user.id}> a pioché : ${log()}`
+                    })
+                    .catch(log4js.trace);
                 if (msg) setDeleteTimer(msg);
             }
         });
@@ -890,10 +904,12 @@ export class Game {
     private async end() {
         this.clearCollectors();
 
-        this?.message?.edit({
+        this?.message
+            ?.edit({
                 components: [],
                 content: 'Partie terminée'
-            })?.catch(log4js.trace);
+            })
+            ?.catch(log4js.trace);
 
         const datas = this._players
             .map((x) => x.calculateEndPoints())
@@ -955,12 +971,10 @@ export class Game {
         return plate.toBuffer('image/jpeg');
     }
     private generateComponents() {
-        const disable = (action: actionButtonType) => this.lastAction === action ? 'Primary' : 'Secondary';
+        const disable = (action: actionButtonType) => (this.lastAction === action ? 'Primary' : 'Secondary');
 
         if (!this.started) {
-            return [
-                row(button({ label: 'Prendre les destinations', id: 'PickDestinations', style: 'Secondary' }))
-            ]
+            return [row(button({ label: 'Prendre les destinations', id: 'PickDestinations', style: 'Secondary' }))];
         }
         return [
             row(
@@ -989,7 +1003,11 @@ export class Game {
         ];
     }
     private get messageContent() {
-        if (!this.started) return this._players.filter(x => x.state === 'idle' || x.state === 'preparing').map(x => `<@${x.user.id}>`).join(', ')
+        if (!this.started)
+            return this._players
+                .filter((x) => x.state === 'idle' || x.state === 'preparing')
+                .map((x) => `<@${x.user.id}>`)
+                .join(', ');
         return `<@${this.current.user.id}>`;
     }
     private async generateContent(): Promise<MessageEditOptions & MessageCreateOptions> {
@@ -1012,7 +1030,9 @@ export class Game {
 
     private async edit(onlyContent = false) {
         if (onlyContent) {
-            this.message.edit({ content: this.messageContent, components: this.generateComponents() }).catch(log4js.trace);
+            this.message
+                .edit({ content: this.messageContent, components: this.generateComponents() })
+                .catch(log4js.trace);
             return;
         }
         const content = await this.generateContent();

@@ -1,10 +1,4 @@
-import {
-    ButtonInteraction,
-    Message,
-    StringSelectMenuBuilder,
-    StringSelectMenuInteraction,
-    User
-} from 'discord.js';
+import { ButtonInteraction, Message, StringSelectMenuBuilder, StringSelectMenuInteraction, User } from 'discord.js';
 import { BaseInterface } from './BaseInterface';
 import { Game } from './Game';
 import { button, nameWagon, row } from '../utils/toolbox';
@@ -51,10 +45,14 @@ export class DrawWagInterface extends BaseInterface {
                 resolve(resolveValue);
                 this.step = 'idle';
 
-                interaction.editReply({
-                    content: `Vous avez pioché ${selected.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')}`,
-                    components: []
-                }).catch(log4js.trace)
+                interaction
+                    .editReply({
+                        content: `Vous avez pioché ${selected
+                            .map((x) => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`)
+                            .join(', ')}`,
+                        components: []
+                    })
+                    .catch(log4js.trace);
                 collector.stop(reason);
             };
             collector.on('end', (_c, reason) => {

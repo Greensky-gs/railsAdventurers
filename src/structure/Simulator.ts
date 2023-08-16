@@ -28,9 +28,11 @@ export class Simulator {
             .map((x: wagonKey) => ({ key: x, count: this.decks.wagons[x] }));
     }
     public maximumEnginesBuild(exclude?: wagonKey) {
-        const map = Object.keys(this.wagons).map((k: keyof typeof this.wagons) => ({ key: k, count: this.wagons[k] })).filter(x => !!exclude ? x.key !== exclude : true);
-        const valid = map.filter(x => x.count >= 3)
+        const map = Object.keys(this.wagons)
+            .map((k: keyof typeof this.wagons) => ({ key: k, count: this.wagons[k] }))
+            .filter((x) => (!!exclude ? x.key !== exclude : true));
+        const valid = map.filter((x) => x.count >= 3);
 
-        return valid.map(x => ({ ...x, count: Math.floor(x.count / 3) }));
+        return valid.map((x) => ({ ...x, count: Math.floor(x.count / 3) }));
     }
 }
