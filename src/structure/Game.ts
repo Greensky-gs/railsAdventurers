@@ -1,5 +1,7 @@
 import {
+    ActionRowBuilder,
     AttachmentBuilder,
+    ButtonBuilder,
     ButtonInteraction,
     CollectedInteraction,
     ComponentType,
@@ -13,7 +15,7 @@ import {
     TextChannel,
     User
 } from 'discord.js';
-import { deckPart, decks, gameOptions, placed } from '../typings/game';
+import { actionButtonType, cancelCallback, deckPart, decks, gameOptions, placed } from '../typings/game';
 import {
     destinationSentence,
     getAllTouchesWith,
@@ -42,7 +44,7 @@ import { log4js, waitForInteraction } from 'amethystjs';
 import { alreadyPlayingInGame, inventory, notParticipating, notYourTurn } from '../contents/embeds';
 import { cardType, wagonKey } from '../typings/datas';
 import { Ids } from '../data/ids';
-import { pointType, rails } from '../typings/points';
+import { color, pointType, rails } from '../typings/points';
 import { colorsData } from '../data/colors';
 import { DrawWagInterface } from './DrawWagInterface';
 import { games } from '../cache/games';
@@ -69,6 +71,8 @@ export class Game {
     private turnsRemaining = -1;
     private collectors: InteractionCollector<CollectedInteraction>[] = [];
     private drawWagInterface = new DrawWagInterface(this);
+    private lastAction: actionButtonType;
+    private callbacks: cancelCallback[] = []
 
     constructor(options: gameOptions) {
         this.users = options.users;
@@ -108,85 +112,105 @@ export class Game {
         const color = path[0].color;
 
         let choice: { key: wagonKey; count: number }[] = [];
-        const choose = async () => {
-            const index = choice.length;
+        let pickedColor: color;
+        const choose = async (index: number) => {
+            index = index % path.length;
             const rail = path[index];
-
+            
             const options = () => {
                 const opts: { key: wagonKey; count: number }[] = [];
-                if (rail.requiresEngine) {
-                    if (simulator.usable.find((x) => x.key === 'engine')) {
-                        opts.push({ key: 'engine', count: 1 });
-                    }
-                    const buildable = simulator.maximumEnginesBuild(color === 'any' ? undefined : color);
-                    buildable.forEach((x) => {
-                        opts.push({
-                            key: x.key,
-                            count: 3
-                        });
+
+                if (simulator.wagons.engine > 0) {
+                    opts.push({
+                        key: 'engine',
+                        count: 1
+                    })
+                }
+                const buildable = simulator.maximumEnginesBuild(color === 'any' ? undefined : color);
+                buildable.forEach((x) => {
+                    opts.push({
+                        key: x.key,
+                        count: 3
                     });
-                } else {
+                });
+                if (!rail.requiresEngine) {
                     if (color === 'any') {
-                        simulator.usable.forEach((usable) => {
-                            opts.push({
-                                key: usable.key,
-                                count: 1
+                        if (pickedColor) {
+                            if (simulator.wagons[pickedColor] > 0) {
+                                opts.push({
+                                    key: pickedColor,
+                                    count: 1
+                                })
+                            }
+                        } else {
+                            simulator.usable.forEach((usable) => {
+                                opts.push({
+                                    key: usable.key,
+                                    count: 1
+                                });
                             });
-                        });
+                        }
                     } else {
                         if (simulator.usable.find((x) => x.key === color)) {
                             opts.push({ key: color, count: 1 });
                         }
                     }
-                    if (simulator.wagons.engine > 0) {
-                        opts.push({ key: 'engine', count: 1 });
-                    }
-                    const buildable = simulator.maximumEnginesBuild(color === 'any' ? undefined : color);
-                    buildable.forEach((x) => {
-                        opts.push({
-                            key: x.key,
-                            count: 3
-                        });
-                    });
                 }
                 return opts;
             };
-            if (options().length === 0) return 'restart';
+            if (options().length === 0) {
+                return 'restart';
+            }    
+
             const rowBuilder = () => {
                 const opts = options();
+                const arrays: ActionRowBuilder<ButtonBuilder>[] = []
 
-                return row(
-                    new StringSelectMenuBuilder()
-                        .setCustomId('game.select.path')
-                        .setMaxValues(1)
-                        .setOptions(
-                            opts.map((opt) => ({
-                                label: `${opt.key === 'engine' || opt.count === 3 ? 'Locomotive' : 'Wagon'}`,
-                                value: `${opt.key}.${opt.count}`,
-                                description: `Utilisez ${opt.count} ${
-                                    opt.key === 'engine'
-                                        ? 'locomotive'
-                                        : `wagon${opt.count === 1 ? '' : 's'} ${colorsData[opt.key]?.name}`
-                                }`
-                            }))
-                        )
-                );
+                opts.forEach((opt, i) => {
+                    if (i % 5 === 0) arrays.push(row());
+
+                    const name = (cl: color) => {
+                        const values: Record<color, string> = {
+                            black: 'noire',
+                            white: 'blanche',
+                            blue: 'blueue',
+                            green: 'verte',
+                            orange: 'orange',
+                            yellow: 'jaune',
+                            pink: 'violette',
+                            red: 'rouge'
+                        }
+                        return values[cl];
+                    }
+                    arrays[arrays.length - 1].addComponents(
+                        button({
+                            label: `${opt.count === 3 ? `Locomotive ${name(opt.key as color)}` : opt.key === 'engine' ? 'Locomotive' : `Wagon ${colorsData[opt.key]?.name}`}`,
+                            style: 'Secondary',
+                            custom: `${opt.key}.${opt.count}`
+                        })
+                    )
+                })
+
+                return arrays;
             };
             await interaction[interaction instanceof Message ? 'edit' : 'editReply']({
                 content: tunnels
                     ? `Quelle carte voulez-vous utiliser pour la ${index + 1}e locomotive supplémentaire ?`
                     : `Quelle carte voulez-vous utiliser pour le ${index + 1}e rail ?`,
-                components: [rowBuilder()]
-            }).catch(log4js.trace);
+                components: rowBuilder()
+            });
 
             const rep = await waitForInteraction({
-                componentType: ComponentType.StringSelect,
+                componentType: ComponentType.Button,
                 user: player.user,
                 message: reply
-            }).catch(log4js.trace);
+            });
             if (!rep) return;
 
-            const datas = rep.values[0].split('.');
+            const datas = rep.customId.split('.');
+            if (datas[0] !== 'engine' && parseInt(datas[1]) === 1) {
+                pickedColor = datas[0] as color;
+            }
             if (choice.find((x) => x.key === datas[0]))
                 choice.find((x) => x.key === datas[0]).count += parseInt(datas[1]);
             else choice.push({ key: datas[0] as wagonKey, count: parseInt(datas[1]) });
@@ -202,10 +226,12 @@ export class Game {
 
         let stopped = false;
         for (let i = 0; i < path.length; i++) {
-            const res = await choose().catch(log4js.trace);
+            const res = await choose(i).catch(log4js.trace);
             if (res === 'restart') {
                 simulator.reset();
                 choice = [];
+                i = 0;
+                pickedColor = null;
             }
             if (!res) {
                 stopped = true;
@@ -448,6 +474,7 @@ export class Game {
                 after();
                 this.index++;
                 player.setState('ready');
+                this.lastAction = 'destinations'
                 this.edit();
             }
             if (interaction.customId === Ids.Place) {
@@ -606,7 +633,7 @@ export class Game {
                     const hasEnough =
                         simulator
                             .maximumEnginesBuild()
-                            .map((x) => x.engines)
+                            .map((x) => x.count)
                             .reduce((a, b) => a + b, 0) +
                             simulator.wagons.engine >=
                         toPay;
@@ -678,7 +705,15 @@ export class Game {
                 after();
                 retreat();
 
+                const msg = await this.channel.send({
+                    content: `<@${player.user.id}> a placé des wagons de **${firstCity.name}** à **${secondCity.name}**`,
+                    allowedMentions: {
+                        parse: []
+                    }
+                }).catch(log4js.trace)
+                if (msg) setDeleteTimer(msg, 10000);
                 interaction.deleteReply().catch(log4js.trace);
+                this.lastAction = 'place';
                 this.edit();
             }
             if (interaction.customId === Ids.Pick) {
@@ -688,11 +723,31 @@ export class Game {
                 player.setState('ready');
 
                 if (res === 'cancel') return;
-                player.addWagon(...res);
+                player.addWagon(...res.map(x => x.key));
+
                 this.index++;
                 after();
-
+                this.lastAction = 'wagons'
+                
                 this.edit(true);
+                const log = () => {
+                    const showable = res.filter(x => x.show);
+                    const hide = res.filter(x => !x.show);
+
+                    if (showable.length > 0 && hide.length > 0) {
+                        return `${showable.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')} et ${['une carte mystère', 'deux cartes mystères'][hide.length - 1]}`
+                    }
+                    if (showable.length > 0) {
+                        return showable.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')
+                    }
+                    return ['une carte mystère', 'deux cartes mystères'][hide.length - 1]
+                }
+
+                const showable = res.filter(x => x.show);
+                const msg = await this.channel.send({
+                    content: `<@${interaction.user.id}> a pioché : ${log()}`
+                }).catch(log4js.trace)
+                if (msg) setDeleteTimer(msg);
             }
         });
     }
@@ -900,22 +955,29 @@ export class Game {
         return plate.toBuffer('image/jpeg');
     }
     private generateComponents() {
+        const disable = (action: actionButtonType) => this.lastAction === action ? 'Primary' : 'Secondary';
+
+        if (!this.started) {
+            return [
+                row(button({ label: 'Prendre les destinations', id: 'PickDestinations', style: 'Secondary' }))
+            ]
+        }
         return [
             row(
                 button({
                     label: 'Piocher des wagons',
-                    style: 'Primary',
+                    style: disable('wagons'),
                     id: 'Pick'
                 }),
                 button({
                     label: 'Piocher des destinations',
-                    style: 'Secondary',
+                    style: disable('destinations'),
                     id: 'Destination',
                     disabled: this.decks.destinations.length === 0
                 }),
                 button({
                     label: 'Placer des wagons',
-                    style: 'Secondary',
+                    style: disable('place'),
                     id: 'Place'
                 }),
                 button({
@@ -938,9 +1000,7 @@ export class Game {
         if (!this.started)
             return {
                 files: [attach],
-                components: [
-                    row(button({ label: 'Prendre les destinations', id: 'PickDestinations', style: 'Secondary' }))
-                ],
+                components: this.generateComponents(),
                 content: this.messageContent
             };
         return {
@@ -952,7 +1012,7 @@ export class Game {
 
     private async edit(onlyContent = false) {
         if (onlyContent) {
-            this.message.edit({ content: this.messageContent }).catch(log4js.trace);
+            this.message.edit({ content: this.messageContent, components: this.generateComponents() }).catch(log4js.trace);
             return;
         }
         const content = await this.generateContent();

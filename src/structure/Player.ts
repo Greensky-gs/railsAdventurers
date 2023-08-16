@@ -22,8 +22,8 @@ export class Player {
             orange: 0,
             green: 0,
             pink: 0,
-            white: 0,
-            engine: 0
+            white: 2,
+            engine: 2
         }
     };
     private finishedDestinations: number[] = [];

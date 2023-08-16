@@ -5,7 +5,7 @@ export class Simulator {
     private decks: decks;
     private base: decks;
     constructor(deck: decks) {
-        this.decks = deck;
+        this.decks = JSON.parse(JSON.stringify(deck));
         this.base = deck;
     }
 
@@ -14,7 +14,7 @@ export class Simulator {
     }
 
     public reset() {
-        this.decks = this.base;
+        this.decks = JSON.parse(JSON.stringify(this.base));
     }
     public removeWagon(...cards: { key: wagonKey; count: number }[]) {
         cards.forEach((card) => {
@@ -28,13 +28,9 @@ export class Simulator {
             .map((x: wagonKey) => ({ key: x, count: this.decks.wagons[x] }));
     }
     public maximumEnginesBuild(exclude?: wagonKey) {
-        const keys = Object.keys(this.decks.wagons)
-            .filter((x) => x !== 'engine')
-            .filter((x) => (!!exclude ? x !== exclude : true));
+        const map = Object.keys(this.wagons).map((k: keyof typeof this.wagons) => ({ key: k, count: this.wagons[k] })).filter(x => !!exclude ? x.key !== exclude : true);
+        const valid = map.filter(x => x.count >= 3)
 
-        const count: { key: wagonKey; engines: number }[] = keys
-            .map((key: wagonKey) => ({ key, engines: Math.floor(this.decks[key] / 3) }))
-            .filter((x) => x.engines > 0);
-        return count;
+        return valid.map(x => ({ ...x, count: Math.floor(x.count / 3) }));
     }
 }

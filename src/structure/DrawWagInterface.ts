@@ -1,6 +1,5 @@
 import {
     ButtonInteraction,
-    InteractionCollector,
     Message,
     StringSelectMenuBuilder,
     StringSelectMenuInteraction,
@@ -15,6 +14,7 @@ import { DrawInterfaceStep } from '../typings/core';
 import { drawWag } from '../contents/embeds';
 import { log4js } from 'amethystjs';
 import { Ids } from '../data/ids';
+import { colorsData } from '../data/colors';
 
 export class DrawWagInterface extends BaseInterface {
     private game: Game;
@@ -28,7 +28,7 @@ export class DrawWagInterface extends BaseInterface {
         this.start();
     }
 
-    public async show(interaction: ButtonInteraction): Promise<wagonKey[] | 'cancel'> {
+    public async show(interaction: ButtonInteraction): Promise<{ key: wagonKey; show: boolean }[] | 'cancel'> {
         return new Promise(async (resolve) => {
             this.step = 'shown';
 
@@ -40,24 +40,21 @@ export class DrawWagInterface extends BaseInterface {
             const collector = reply.createMessageComponentCollector({
                 time: 120000
             });
-            const selected: wagonKey[] = [];
+            const selected: { key: wagonKey; show: boolean }[] = [];
 
             const end = (
                 reason: string,
                 ctx: ButtonInteraction | StringSelectMenuInteraction,
-                resolveValue: wagonKey[] | 'cancel'
+                resolveValue: { key: wagonKey; show: boolean }[] | 'cancel'
             ) => {
                 ctx.deferUpdate().catch(log4js.trace);
                 resolve(resolveValue);
                 this.step = 'idle';
 
-                interaction.deleteReply().catch(() => {
-                    interaction
-                        .editReply({
-                            components: []
-                        })
-                        .catch(log4js.trace);
-                });
+                interaction.editReply({
+                    content: `Vous avez pioché ${selected.map(x => `${x.key === 'engine' ? 'locomotive' : `wagon ${colorsData[x.key].name}`}`).join(', ')}`,
+                    components: []
+                }).catch(log4js.trace)
                 collector.stop(reason);
             };
             collector.on('end', (_c, reason) => {
@@ -81,7 +78,10 @@ export class DrawWagInterface extends BaseInterface {
                     }
                     if (ctx.customId === Ids.PickRandom) {
                         const random = this.game.drawWag(false);
-                        selected.push(random);
+                        selected.push({
+                            show: false,
+                            key: random
+                        });
 
                         if (this.step === 'firstpicked') {
                             end('ended', ctx, selected);
@@ -99,7 +99,10 @@ export class DrawWagInterface extends BaseInterface {
 
                     const replace = this.game.drawWag(false);
                     this.selection.splice(index, 1, replace);
-                    selected.push(key);
+                    selected.push({
+                        key,
+                        show: true
+                    });
 
                     if (this.step === 'firstpicked') {
                         end('ended', ctx, selected);

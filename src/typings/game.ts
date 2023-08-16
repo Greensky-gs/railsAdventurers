@@ -22,3 +22,5 @@ export type deckPart = {
     [key in wagonKey]?: number;
 };
 export type drawInterfaceSelection = [wagonKey, wagonKey, wagonKey, wagonKey, wagonKey];
+export type actionButtonType = 'wagons' | 'destinations' | 'place'
+export type cancelCallback = (player: Player) => unknown;
