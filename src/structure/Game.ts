@@ -781,14 +781,14 @@ export class Game {
             .reply({
                 ephemeral: true,
                 fetchReply: true,
-                content: `Choisissez au moins **3** destinations\n${player.destinations
+                content: `Choisissez au moins **2** destinations\n${player.destinations
                     .map((dest) => `- ${destinationSentence(dest)}`)
                     .join('\n')}`,
                 components: [
                     row(
                         new StringSelectMenuBuilder()
                             .setCustomId(Ids.PickDestinationsSelector)
-                            .setMinValues(3)
+                            .setMinValues(2)
                             .setMaxValues(5)
                             .setOptions(
                                 player.destinations.map((dest) => ({
